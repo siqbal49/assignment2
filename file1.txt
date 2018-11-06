@@ -15,3 +15,5 @@ CREATE TABLE product(productid CHAR(2), description CHAR(20), costperitem FLOAT,
 CREATE TABLE purchase(customerid CHAR(2), productid CHAR(2), quantitypurchased INT, PRIMARY KEY(customerid, productid), FOREIGN KEY(customerid) REFERENCES customer(customerid), FOREIGN KEY(productid) REFERENCES product(productid));
 CREATE VIEW dealswith AS SELECT customerid, agentid FROM customer;
 SHOW TABLES;
+
+I'm so cooooooool;
