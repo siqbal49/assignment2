@@ -1,0 +1,15 @@
+-- Deletions/views 
+SELECT * FROM product;
+SELECT * FROM customer; 
+SELECT * FROM agent;
+SELECT * FROM purchase; 
+CREATE VIEW purchaseinfo AS SELECT firstname, lastname, description, quantitypurchased, costperitem, quantitypurchased*costperitem AS "Total purchase cost" FROM customer, product, purchase ORDER BY lastname;
+SELECT * FROM purchaseinfo;
+SELECT * FROM purchaseinfo WHERE quantitypurchased*costperitem >100;
+DELETE FROM product WHERE productid=55;
+-- The row for my made up product (soccer ball) was deleted because it is not used as a foreign key anywhere (i.e. it was never purchased)
+SELECT * FROM product;
+DELETE FROM agent WHERE agentcity="Springfield";
+-- the agent row with agentid 99 was not deleted because this agent he is dealing with a customer which restricts him from being deleted because of foreign key constraint
+SELECT * FROM agent;
+

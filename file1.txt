@@ -1,0 +1,17 @@
+-- Creation of Database and Tables
+SHOW databases;
+DROP DATABASE IF EXISTS siqbal49assign2db;
+CREATE DATABASE siqbal49assign2db;
+USE siqbal49assign2db;
+GRANT USAGE ON *.* TO 'ta'@'localhost';
+DROP USER 'ta'@'localhost';
+CREATE USER 'ta'@'localhost' IDENTIFIED BY 'cs3319';
+GRANT ALL PRIVILEGES ON siqbal49assign2db TO 'ta'@'localhost';
+FLUSH PRIVILEGES;
+SHOW TABLES;
+CREATE TABLE agent(agentid CHAR(2), firstname CHAR(30), lastname CHAR(30), agentcity CHAR(15), commissionpercentage INT, PRIMARY KEY(agentid));
+CREATE TABLE customer(customerid CHAR(2), firstname CHAR(30), lastname CHAR(30), customercity CHAR(15), phonenumber CHAR(8), agentid CHAR(2), PRIMARY KEY(customerid), FOREIGN KEY(agentid) REFERENCES agent(agentid));
+CREATE TABLE product(productid CHAR(2), description CHAR(20), costperitem FLOAT, quantityofitem INT, PRIMARY KEY(productid));
+CREATE TABLE purchase(customerid CHAR(2), productid CHAR(2), quantitypurchased INT, PRIMARY KEY(customerid, productid), FOREIGN KEY(customerid) REFERENCES customer(customerid), FOREIGN KEY(productid) REFERENCES product(productid));
+CREATE VIEW dealswith AS SELECT customerid, agentid FROM customer;
+SHOW TABLES;
