@@ -1,0 +1,6 @@
+Warning: Using a password on the command line interface can be insecure.
+ERROR 2 (HY000) at line 4: File '/root/assignment2/loaddatafall2018.txt' not found (Errcode: 2 - No such file or directory)
+--------------
+LOAD DATA LOCAL INFILE '~/assignment2/loaddatafall2018.txt' INTO TABLE product FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n'
+--------------
+

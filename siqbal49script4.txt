@@ -1,4 +1,5 @@
 -- Deletions/views 
+USE siqbal49assign2db;
 SELECT * FROM product;
 SELECT * FROM customer; 
 SELECT * FROM agent;

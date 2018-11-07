@@ -1,4 +1,5 @@
 -- File 3 - Queries
+USE siqbal49assign2db;
 -- Query 1
 SELECT description FROM product; 
 -- Query 2 

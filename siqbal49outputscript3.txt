@@ -1,6 +1,65 @@
 Warning: Using a password on the command line interface can be insecure.
-ERROR 1046 (3D000) at line 3: No database selected
 --------------
 SELECT description FROM product
+--------------
+
+--------------
+SELECT DISTINCT customercity FROM customer
+--------------
+
+--------------
+SELECT * FROM agent ORDER BY agentcity
+--------------
+
+--------------
+SELECT firstname, lastname FROM customer WHERE customercity="Springfield"
+--------------
+
+--------------
+SELECT lastname FROM customer WHERE agentid=11
+--------------
+
+--------------
+SELECT description FROM product WHERE description LIKE ("%Pad%")
+--------------
+
+--------------
+SELECT lastname, description, quantitypurchased FROM customer, product, purchase WHERE customer.customerid=purchase.customerid AND product.productid=purchase.productid
+--------------
+
+--------------
+SELECT SUM(quantitypurchased) AS "Homer's Total Purchases" FROM purchase WHERE customerid=(SELECT customerid FROM customer WHERE firstname="Homer")
+--------------
+
+Homer's Total Purchases
+NULL
+--------------
+SELECT firstname, lastname, SUM(quantitypurchased) FROM customer, purchase WHERE purchase.customerid=customer.customerid GROUP BY firstname ORDER BY SUM(quantitypurchased)
+--------------
+
+--------------
+SELECT description, quantityofitem FROM product WHERE productid NOT IN (SELECT productid FROM purchase)
+--------------
+
+--------------
+SELECT description, quantityofitem FROM product WHERE productid NOT IN (SELECT productid FROM purchase WHERE customerid=(SELECT customerid FROM customer WHERE firstname="Fred" AND lastname="Flintstone"))
+--------------
+
+--------------
+SELECT agent.firstname, agent.lastname, customer.firstname, customer.lastname FROM agent, customer WHERE agentcity=customercity
+--------------
+
+--------------
+SELECT SUM(quantitypurchased) AS "Total knee pads bought" FROM purchase WHERE productid=(SELECT productid FROM product WHERE description IN ("Knee pads"))
+--------------
+
+Total knee pads bought
+NULL
+--------------
+SELECT description, count(*) FROM product, purchase GROUP BY description
+--------------
+
+--------------
+SELECT firstname, lastname FROM agent WHERE agentid IN(SELECT agentid FROM customer WHERE customerid IN(SELECT customerid FROM purchase WHERE productid=78))
 --------------
 

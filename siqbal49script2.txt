@@ -1,7 +1,7 @@
 -- Insertion and modification 
 USE siqbal49assign2db;
 
-LOAD DATA LOCAL INFILE '~/assignment2/loaddatafall2018.txt' INTO TABLE product FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n';
+LOAD DATA LOCAL INFILE 'loaddatafall2018.txt' INTO TABLE product FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n';
 SELECT * FROM product;
 -- inserts for product table
 INSERT INTO product (productid, description, costperitem, quantityofitem) VALUES (66, "Elbow pads", 14.25, 120);
