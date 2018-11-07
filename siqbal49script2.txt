@@ -51,3 +51,5 @@ UPDATE purchase SET quantitypurchased=5 WHERE customerid=(SELECT customerid FROM
 UPDATE customer SET customercity="Boston" WHERE agentid=(SELECT agentid FROM agent WHERE firstname="Regis");
 SELECT * FROM customer;
 SELECT * FROM purchase;
+SELECT * FROM agent;
+SELECT * FROM product;

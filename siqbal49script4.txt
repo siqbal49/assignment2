@@ -3,7 +3,7 @@ SELECT * FROM product;
 SELECT * FROM customer; 
 SELECT * FROM agent;
 SELECT * FROM purchase; 
-CREATE VIEW purchaseinfo AS SELECT firstname, lastname, description, quantitypurchased, costperitem, quantitypurchased*costperitem AS "Total purchase cost" FROM customer, product, purchase ORDER BY lastname;
+CREATE VIEW purchaseinfo AS SELECT customer.firstname, customer.lastname, product.description, purchase.quantitypurchased, product.costperitem, quantitypurchased*costperitem AS "Total purchase cost" FROM customer, product, purchase WHERE (customer.customerid=purchase.customerid AND product.productid=purchase.productid) ORDER BY lastname;
 SELECT * FROM purchaseinfo;
 SELECT * FROM purchaseinfo WHERE quantitypurchased*costperitem >100;
 DELETE FROM product WHERE productid=55;
